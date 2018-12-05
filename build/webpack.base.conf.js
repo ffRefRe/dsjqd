@@ -3,6 +3,7 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+var webpack=require('webpack');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -36,7 +37,8 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-    }
+      'bootstrap':resolve('src/user/')
+}
   },
   module: {
     rules: [
@@ -74,6 +76,14 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.css$/,
+        include: [
+          /src/,//表示在src目录下的css需要编译
+          '/node_modules/element-ui/lib/'  //增加此项
+        ],
+        loader: 'style-loader!css-loader'
       }
     ]
   },
@@ -88,5 +98,14 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $:"jquery",
+      jQuery:"jquery",
+      "windows.jQuery":"jquery"
+    })
+  ]
+
 }
+
