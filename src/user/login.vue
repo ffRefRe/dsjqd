@@ -80,11 +80,6 @@
 <script>
   import axios from 'axios'
 
-  $(function () {
-    alert(123);
-  });
-
-
 
   export default {
     name: 'login',
@@ -171,6 +166,7 @@
 <style scoped>
   @import "../../static/css/demo.css";
   @import "../../static/css/main.css";
+  @import "../bootstrap/dist/css/bootstrap.min.css";
 
 
 
