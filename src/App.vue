@@ -6,7 +6,8 @@
     <el-button type="primary" @click="login">login</el-button>
     <el-button type="primary" @click="register">register</el-button>
 
-    <login></login>
+    <router-view></router-view>
+
 
   </div>
 </template>

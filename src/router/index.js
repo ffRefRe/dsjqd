@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Login from '../user/login.vue'
-import Register from '../user/register.vue'
+import Login from '../user/login'
+import Register from '../user/register'
 
 Vue.use(Router)
 
@@ -11,8 +10,8 @@ export default new Router({
 
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'login',
+      component: Login
     },
     {
       path: '/login',

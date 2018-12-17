@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import VueRouter from 'vue-router'
 import ElementUI from 'element-ui'
 import VueResource from 'vue-resource'
 
@@ -12,9 +11,6 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(VueResource)
 
-const routers = new VueRouter({
-  router
-})
 
 
 
@@ -22,7 +18,7 @@ const routers = new VueRouter({
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router:routers,
+  router,
   components: { App },
   template: '<App/>'
 })

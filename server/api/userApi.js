@@ -25,7 +25,7 @@ router.post('/addUser', (req, res) => {
   // var sql = $sql.test.add;
   var params = req.body;
   console.log(params);
-  conn.query(sql, [params.username], function(err, result) {
+  conn.query(sql, [params.username, params.email, params.password ], function(err, result) {
     if (err) {
       console.log(err);
     }
