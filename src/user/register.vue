@@ -4,7 +4,9 @@
 
 
     <div>
+
       <button @click="click">click </button>
+      <router-link to="login">sss</router-link>
 
       <button @click="sendapi"> s end </button>
       <el-button @click="visi">Button</el-button>
@@ -99,7 +101,7 @@
 
 
   export default {
-    name: 'login',
+    name: 'register',
     data () {
       return {
         msg: 'Welcome to Your Vue.js App',

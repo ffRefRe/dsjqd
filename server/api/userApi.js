@@ -22,9 +22,10 @@ var jsonWrite = function(res, ret) {
 // 增加用户接口
 router.post('/addUser', (req, res) => {
   var sql = $sql.user.add;
+  // var sql = $sql.test.add;
   var params = req.body;
   console.log(params);
-  conn.query(sql, [params.username, params.age], function(err, result) {
+  conn.query(sql, [params.username], function(err, result) {
     if (err) {
       console.log(err);
     }

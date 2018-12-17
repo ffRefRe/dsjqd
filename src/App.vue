@@ -3,8 +3,10 @@
 
 
 
-    <Login></Login>
+    <el-button type="primary" @click="login">login</el-button>
+    <el-button type="primary" @click="register">register</el-button>
 
+    <login></login>
 
   </div>
 </template>
@@ -17,6 +19,15 @@ export default {
   components:{
     Login,
 
+  },
+  methods:{
+    register:function () {
+      console.log(1)
+      this.$router.push({path:'/register'});
+    },
+    login:function () {
+      this.$router.push({path:'/login'});
+    }
   }
 
 }
