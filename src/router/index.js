@@ -18,7 +18,7 @@ export default new Router({
     {
       path: '/',
       component: Home,
-      children:[
+      children: [
         {
           path: '/adSponsor',
           component: AdSponsor
@@ -30,7 +30,7 @@ export default new Router({
         {
           path: '/adPut',
           component: AdPut
-        },
+        }
       ]
     },
     {
@@ -55,8 +55,6 @@ export default new Router({
     {
       path: '/home',
       component: Home
-    },
-
-
+    }
   ]
 })

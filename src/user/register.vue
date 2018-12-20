@@ -2,8 +2,6 @@
 
   <div>
 
-
-
     <div id="wrapper">
       <div class="vertical-align-wrap">
         <div class="vertical-align-middle">
@@ -13,7 +11,6 @@
                 <div class="header" style="text-align: center">
                   <div class="logo text-center"></div>
                   <p class="lead">Register your account</p>
-
 
                   <div class="box-body" >
                     <div class="col-md-6">
@@ -88,17 +85,11 @@
 
                   </div>
 
-
-
                 </div>
 
                 <div>
 
-
                 </div>
-
-
-
 
             </div>
           </div>
@@ -106,80 +97,49 @@
       </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   </div>
-
-
 
 </template>
 
-
-
 <script>
-  import axios from 'axios'
+// import axios from 'axios'
 
+export default {
+  name: 'register',
+  data () {
+    return {
+      msg: 'Welcome to Your Vue.js App',
+      email: '',
+      password: '',
+      userName: ''
 
-  export default {
-    name: 'register',
-    data () {
-      return {
-        msg: 'Welcome to Your Vue.js App',
-        email:'',
-        password:'',
-        userName: '',
+    }
+  },
 
-      }
+  methods: {
+    addUser () {
+      var name = this.userName
+      console.log(name)
+      console.log(this.email)
+      console.log(this.password)
+      this.$http.post('/api/user/addUser', {
+        username: name,
+        email: this.email,
+        password: this.password
+      }, {}).then((response) => {
+        console.log(response)
+        if (response.status === 200) {
+          console.log('success')
+        }
+      })
     },
-
-    methods: {
-      addUser() {
-        var name = this.userName;
-        console.log(name)
-        console.log(this.email)
-        console.log(this.password)
-        this.$http.post('/api/user/addUser', {
-          username: name,
-          email: this.email,
-          password: this.password,
-        },{}).then((response) => {
-          console.log(response);
-          if(response.status ==200) {
-            console.log('success')
-          }
-
-        })
-      },
-      createPerson() {
-        this.$router.push('/')
-      }
-
-
-
-
-
+    createPerson () {
+      this.$router.push('/')
     }
 
   }
+
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -187,10 +147,5 @@
   @import "../../static/css/demo.css";
   @import "../../static/css/main.css";
   @import "../bootstrap/dist/css/bootstrap.min.css";
-
-
-
-
-
 
 </style>

@@ -1,6 +1,5 @@
 <style>
 
-
 </style>
 <template>
     <aside class="main-sidebar" style="margin-top:50px;">
@@ -119,129 +118,126 @@
                 <a :href="getUrl('fortify')"><i class="fa fa-pencil"></i> <span>fortify</span></a>
               </li>-->
 
-
             </ul>
         </div>
     </aside>
 </template>
 <script>
-    export default {
-        data: function() {
-            return {
-                user: {},
-                task_id: '',
-                //跳转页面信息
-                result_title: '',
-                projectInfo: [],
-                token: 1, //default 0 as sourcecode
-                type: 1 //default -1 as non clone
-            }
-        },
-        mounted: function() {
-            var vm = this;
-            $.ajax({
-                type: 'get',
-                dataType: "json",
-                url: '/api/user/me',
-                data: null,
-                success: function(data) {
-                    if (data.status === 1) {
-                        vm.id = data.data.id;
-                        vm.user = data.data;
-                    } else {
-                        vm.$router.push({
-                            path: '/login'
-                        })
-                    }
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
+export default {
+  data: function () {
+    return {
+      user: {},
+      task_id: '',
+      // 跳转页面信息
+      result_title: '',
+      projectInfo: [],
+      token: 1, // default 0 as sourcecode
+      type: 1 // default -1 as non clone
+    }
+  },
+  mounted: function () {
+    var vm = this
+    $.ajax({
+      type: 'get',
+      dataType: 'json',
+      url: '/api/user/me',
+      data: null,
+      success: function (data) {
+        if (data.status === 1) {
+          vm.id = data.data.id
+          vm.user = data.data
+        } else {
+          vm.$router.push({
+            path: '/login'
+          })
+        }
+      },
+      error: function (data) {
+        console.log(data)
+      }
+    })
 
-            //    控制左侧导航点击样式
-            $(document).ready(function() {
-                $('.inactive').click(function() {
-                    if ($(this).siblings('ul').css('display') == 'none') {
-                        $(this).parent('li').siblings('li').removeClass('inactives');
-                        $(this).addClass('inactives');
-                        $(this).siblings('ul').slideDown(100).children('li');
-                        if ($(this).parents('li').siblings('li').children('ul').css('display') == 'block') {
-                            $(this).parents('li').siblings('li').children('ul').parent('li').children('a').removeClass('inactives');
-                            $(this).parents('li').siblings('li').children('ul').slideUp(100);
+    //    控制左侧导航点击样式
+    $(document).ready(function () {
+      $('.inactive').click(function () {
+        if ($(this).siblings('ul').css('display') == 'none') {
+          $(this).parent('li').siblings('li').removeClass('inactives')
+          $(this).addClass('inactives')
+          $(this).siblings('ul').slideDown(100).children('li')
+          if ($(this).parents('li').siblings('li').children('ul').css('display') == 'block') {
+            $(this).parents('li').siblings('li').children('ul').parent('li').children('a').removeClass('inactives')
+            $(this).parents('li').siblings('li').children('ul').slideUp(100)
+          }
+        } else {
+          // 控制自身变成+号
+          $(this).removeClass('inactives')
+          // 控制自身菜单下子菜单隐藏
+          $(this).siblings('ul').slideUp(100)
+          // 控制自身子菜单变成+号
+          $(this).siblings('ul').children('li').children('ul').parent('li').children('a').addClass('inactives')
+          // 控制自身菜单下子菜单隐藏
+          $(this).siblings('ul').children('li').children('ul').slideUp(100)
 
-                        }
-                    } else {
-                        //控制自身变成+号
-                        $(this).removeClass('inactives');
-                        //控制自身菜单下子菜单隐藏
-                        $(this).siblings('ul').slideUp(100);
-                        //控制自身子菜单变成+号
-                        $(this).siblings('ul').children('li').children('ul').parent('li').children('a').addClass('inactives');
-                        //控制自身菜单下子菜单隐藏
-                        $(this).siblings('ul').children('li').children('ul').slideUp(100);
+          // 控制同级菜单只保持一个是展开的（-号显示）
+          $(this).siblings('ul').children('li').children('a').removeClass('inactives')
+        }
+      })
+    })
+    this.task_id = this.$route.params.id
+    vm.getTitle()
+    vm.getSideBar()
+    // getTaskData(vm,vm.task_id + '/info', vm.projectInfo);
+  },
+  methods: {
+    logout: function () {
+      $.ajax({
+        type: 'get',
+        url: '/api/user/logout',
+        success: function (data) {
+          window.location.href = 'login.html#!/'
+        }
+      })
+    },
+    getUrl (title) {
+      var vm = this
+      return '#/task/' + vm.task_id + '/' + title + '?user_id=' + this.user.id
+    },
 
-                        //控制同级菜单只保持一个是展开的（-号显示）
-                        $(this).siblings('ul').children('li').children('a').removeClass('inactives');
-                    }
-                })
-            });
-            this.task_id = this.$route.params.id;
-            vm.getTitle();
-            vm.getSideBar();
-            //getTaskData(vm,vm.task_id + '/info', vm.projectInfo);
+    getTitle: function () {
+      var vm = this
+      var url = window.location.href
+      if (url.indexOf('?')) {
+        var args = url.split('?')
+        vm.result_title = args[0].split('/')[args[0].split('/').length - 1]
+        if (vm.result_title == '' || vm.result_title == undefined || vm.result_title == null) {
+          vm.result_title = 'clone'
+        }
+      }
+    },
+    // 控制二级导航栏刷新后还保持样式
+    getSideBar: function () {
+      var vm = this
+      // 许可证DIV
+      var licensDiv = document.getElementById('license')
+      // 安全漏洞DIV
+      var vulDiv = document.getElementById('vul')
+      //                if (vm.result_title == "license_detail" || vm.result_title == "license_location") {
+      //                    //将ul样式设置为block展开形式，none为隐藏
+      //                    licensDiv.style.display = 'block';
+      //                    console.log(licensDiv.style.display);
+      //                    //将license最外层右侧变为“-”号
+      //                    $('#license-title').addClass('inactives');
+      //                };
+      if (vm.result_title == 'sensitive_risk' || vm.result_title == 'trojan_risk' || vm.result_title == 'vulnerability' || vm.result_title == 'protocol_encryption' || vm.result_title == 'code_error') {
+        // 将ul样式设置为block展开形式，none为隐藏
+        vulDiv.style.display = 'block'
+        // 将license最外层右侧变为“-”号
+        $('#vul-title').addClass('inactives')
+      }
+    }
 
-        },
-        methods: {
-            logout: function() {
-                $.ajax({
-                    type: 'get',
-                    url: '/api/user/logout',
-                    success: function(data) {
-                        window.location.href = "login.html#!/";
-                    }
-                });
-            },
-            getUrl(title) {
-                var vm = this;
-                return '#/task/' + vm.task_id + "/" + title + "?user_id=" + this.user.id;
-            },
-
-            getTitle: function() {
-                var vm = this;
-                var url = window.location.href;
-                if (url.indexOf("?")) {
-                    var args = url.split("?");
-                    vm.result_title = args[0].split("/")[args[0].split("/").length - 1];
-                    if (vm.result_title == "" || vm.result_title == undefined || vm.result_title == null) {
-                        vm.result_title = "clone";
-                    }
-                }
-            },
-            //控制二级导航栏刷新后还保持样式
-            getSideBar: function() {
-                var vm = this;
-                //许可证DIV
-                var licensDiv = document.getElementById("license");
-                //安全漏洞DIV
-                var vulDiv = document.getElementById("vul");
-                //                if (vm.result_title == "license_detail" || vm.result_title == "license_location") {
-                //                    //将ul样式设置为block展开形式，none为隐藏
-                //                    licensDiv.style.display = 'block';
-                //                    console.log(licensDiv.style.display);
-                //                    //将license最外层右侧变为“-”号
-                //                    $('#license-title').addClass('inactives');
-                //                };
-                if (vm.result_title == "sensitive_risk" || vm.result_title == "trojan_risk" || vm.result_title == "vulnerability" || vm.result_title == "protocol_encryption" || vm.result_title == "code_error") {
-                    //将ul样式设置为block展开形式，none为隐藏
-                    vulDiv.style.display = 'block';
-                    //将license最外层右侧变为“-”号
-                    $('#vul-title').addClass('inactives');
-                }
-            },
-
-        },
-        /*watch: {
+  }
+  /* watch: {
             projectInfo: function(val) {
                 var vm = this;
                 if (val.length != 0) {
@@ -262,7 +258,7 @@
                     console.log("vm.vm.token:" + vm.token)
                 }
             }
-        }*/
-    }
+        } */
+}
 
 </script>

@@ -15,7 +15,6 @@
           </div>
         </form>
 
-
         <form class="navbar-form navbar-left">
           <div class="input-group">
             <input type="text" value="" class="form-control" placeholder="Search ....">
@@ -29,7 +28,6 @@
             <span>UPGRADE TO PRO</span>
           </a>
         </div>
-
 
         <div id="navbar-menu">
           <ul class="nav navbar-nav navbar-right">
@@ -75,13 +73,11 @@
       </div>
     </nav>
 
-
     <div id="sidebar-nav" class="sidebar">
       <div class="sidebar-scroll">
         <nav>
 
           <hr style="margin: 10px">
-
 
           <div class="sidebar-header align-items-center" style="display: flex">
             <div><img src="../assets/user-medium.png" class="img-circle userImg" alt="User Image"></div>
@@ -89,9 +85,6 @@
           </div>
 
           <hr style="margin: 10px">
-
-
-
 
           <ul class="nav">
             <li><a href="" class="active"><i class="lnr lnr-home"></i> <span>广告主</span></a></li>
@@ -124,24 +117,14 @@
 
             </li>
 
-
             <!--<li><a href="tables.html" class=""><i class="lnr lnr-dice"></i> <span>Tables</span></a></li>-->
             <!--<li><a href="typography.html" class=""><i class="lnr lnr-text-format"></i> <span>Typography</span></a></li>-->
             <!--<li><a href="icons.html" class=""><i class="lnr lnr-linearicons"></i> <span>Icons</span></a></li>-->
           </ul>
 
-
-
-
-
-
         </nav>
       </div>
     </div>
-
-
-
-
 
     <div class="main">
       <div class="main-content">
@@ -156,39 +139,35 @@
 
       </div>
     </footer>
-
   </div>
-
 
 </template>
 
 <script>
-  import {bootjs} from '../../static/js/bootstrap.min'
-  import {jqujs} from '../../static/js/jquery.min'
+// import {bootjs} from '../../static/js/bootstrap.min'
+// import {jqujs} from '../../static/js/jquery.min'
 
-  export default {
-    data: function () {
-      return {
+export default {
+  data: function () {
+    return {
 
-      };
-    },
-    methods:{
-      goPage(val) {
-        this.$router.push({path: val});
-      },
     }
-
+  },
+  methods: {
+    goPage (val) {
+      this.$router.push({path: val})
+    }
   }
 
-</script>
+}
 
+</script>
 
 <style>
   @import "../../static/css/bootmin.css";
   @import "../../static/css/style.css";
   @import "../../static/css/main.css";
   @import "../../static/css/demo.css";
-
 
   .logo{
     height: 70px;
@@ -228,8 +207,5 @@
     height: auto;
     margin: 23px 0 0 5px;
   }
-
-
-
 
 </style>

@@ -106,28 +106,22 @@
     </footer>
   </div>
 
-
 </template>
 <script>
-  export default {
-    data: function () {
-      return {
+export default {
+  data: function () {
+    return {
 
-      };
-    },
-
+    }
   }
 
-</script>
+}
 
+</script>
 
 <style>
   @import "../../static/css/bootmin.css";
   @import "../../static/css/main.css";
   @import "../../static/css/demo.css";
-
-
-
-
 
 </style>

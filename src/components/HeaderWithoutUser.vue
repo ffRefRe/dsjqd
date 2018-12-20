@@ -15,27 +15,27 @@
   </header>
 </template>
 <script>
-  export default {
-    data: function () {
-      return {
-        id: 0,
-      };
-    },
-
-    methods: {
-      logout: function () {
-        this.$http.get('/api/user/logout').then(response => {
-          this.$router.push({path: '/login'});
-          console.log("注销成功！")
-        }, response => {
-          console.log("request error");
-        });
-      }
-    },
-
-    created: function () {
-      this.id = this.$route.query.user_id;
+export default {
+  data: function () {
+    return {
+      id: 0
     }
+  },
+
+  methods: {
+    logout: function () {
+      this.$http.get('/api/user/logout').then(response => {
+        this.$router.push({path: '/login'})
+        console.log('注销成功！')
+      }, response => {
+        console.log('request error')
+      })
+    }
+  },
+
+  created: function () {
+    this.id = this.$route.query.user_id
   }
+}
 
 </script>

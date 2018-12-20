@@ -73,32 +73,32 @@
 </template>
 
 <script>
-    export default {
-        computed: {
-            user() {
-                //因为在main.js中已经全局注册了store，所以这里直接用this.$直接使用。
-                return this.$store.state.user
-            }
-        },
-        methods: {
-            logout: function() {
-                var vm = this;
-                $.ajax({
-                    type: 'GET',
-                    dataType: "json",
-                    url: '/api/user/logout',
-                    data: '',
-                    success: function(data) {
-                        if (data.status == 0) {
-                            vm.$router.push({
-                                path: '/login'
-                            })
-                            console.log("注销成功！")
-                        }
-                    }
-                });
-            }
-        },
+export default {
+  computed: {
+    user () {
+      // 因为在main.js中已经全局注册了store，所以这里直接用this.$直接使用。
+      return this.$store.state.user
     }
+  },
+  methods: {
+    logout: function () {
+      var vm = this
+      $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/api/user/logout',
+        data: '',
+        success: function (data) {
+          if (data.status == 0) {
+            vm.$router.push({
+              path: '/login'
+            })
+            console.log('注销成功！')
+          }
+        }
+      })
+    }
+  }
+}
 
 </script>

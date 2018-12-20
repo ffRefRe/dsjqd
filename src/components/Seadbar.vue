@@ -92,153 +92,147 @@
   </aside>
 </template>
 <script>
-  export default {
-    data: function () {
-      return {
-        username: '',
-        task_id: '',
-        id: '',
-        //跳转页面信息
-        license: true,
-      }
-    },
-    mounted: function () {
-      this.$http.get("/api/user/me").then(response => {
-        if (response.data.status == 1) {
-          this.id = response.data.data.id;
-          this.username = response.data.data.username;
-        }
-        else {
-          this.$router.push({
-            path: '/login'
-          })
-        }
-      });
-
-      this.$http.get("/api/sys/license").then(response => {
-        if(response.data.status != 1 || response.data.status == null)
-        {
-          this.license = false;
-        }
-        else
-        {
-          this.license = true;
-        }
-      });
-      //    控制左侧导航点击样式
-      $(document).ready(function () {
-        $('.inactive').click(function () {
-          if ($(this).siblings('ul').css('display') == 'none') {
-            $(this).parent('li').siblings('li').removeClass('inactives');
-            $(this).addClass('inactives');
-            $(this).siblings('ul').slideDown(100).children('li');
-            if ($(this).parents('li').siblings('li').children('ul').css('display') == 'block') {
-              $(this).parents('li').siblings('li').children('ul').parent('li').children('a').removeClass('inactives');
-              $(this).parents('li').siblings('li').children('ul').slideUp(100);
-
-            }
-          } else {
-            //控制自身变成+号
-            $(this).removeClass('inactives');
-            //控制自身菜单下子菜单隐藏
-            $(this).siblings('ul').slideUp(100);
-            //控制自身子菜单变成+号
-            $(this).siblings('ul').children('li').children('ul').parent('li').children('a').addClass('inactives');
-            //控制自身菜单下子菜单隐藏
-            $(this).siblings('ul').children('li').children('ul').slideUp(100);
-
-            //控制同级菜单只保持一个是展开的（-号显示）
-            $(this).siblings('ul').children('li').children('a').removeClass('inactives');
-          }
-        })
-      });
-
-      this.getSideBar();
-
-    },
-    created: function () {
-      this.getTitle();
-    },
-    methods: {
-      logout: function () {
-        $.ajax({
-          type: 'get',
-          url: '/api/user/logout',
-          success: function (data) {
-            window.location.href = "login.html#!/";
-          }
-        });
-      },
-      getTitle: function () {
-        var url = window.location.href;
-        this.result_title = url.split("/")[url.split("/").length - 1];
-        this.result_title = this.result_title.split("?")[0];
-        console.log(" this.result_title" + this.result_title)
-      },
-      //以下函数控制左侧导航，刷新后仍保持样式
-      clickcolor: function (title) {
-        this.result_title = title;
+export default {
+  data: function () {
+    return {
+      username: '',
+      task_id: '',
+      id: '',
+      // 跳转页面信息
+      license: true
+    }
+  },
+  mounted: function () {
+    this.$http.get('/api/user/me').then(response => {
+      if (response.data.status == 1) {
+        this.id = response.data.data.id
+        this.username = response.data.data.username
+      } else {
         this.$router.push({
-          path: '/' + this.result_title,
-          query: {user_id: this.id}
+          path: '/login'
         })
-      },
-      //控制二级导航栏刷新后还保持样式
-      getSideBar: function () {
-        //许可证DIV
-        var licensDiv = document.getElementById("projectManage");
-        //安全漏洞DIV
-        var vulDiv = document.getElementById("userInfo");
-        var helpDiv = document.getElementById("help");
-        var sysDiv = document.getElementById("sys");
-
-        if (this.result_title == "upload" || this.result_title == "my_projects") {
-          //将ul样式设置为block展开形式，none为隐藏
-          licensDiv.style.display = 'block';
-          $('#project-title').addClass('inactives');
-        }
-
-        if (this.result_title == "standard") {
-          //将ul样式设置为block展开形式，none为隐藏
-          helpDiv.style.display = 'block';
-          $('#help-title').addClass('inactives');
-        }
-
-        if (this.result_title == "sysLicense" || this.result_title == "server" || this.result_title == "user_email" || this.result_title == "log") {
-          //将ul样式设置为block展开形式，none为隐藏
-          sysDiv.style.display = 'block';
-          $('#sys-title').addClass('inactives');
-        }
-
-        if (this.result_title == "user_manage" || this.result_title == "user_info" || this.result_title == "password") {
-          //将ul样式设置为block展开形式，none为隐藏
-          vulDiv.style.display = 'block';
-          $('#user-title').addClass('inactives');
-        }
       }
-    },
+    })
 
-    watch: {
-      projectInfo: function (val) {
-        if (val.length != 0) {
-          var newDate = new Date();
+    this.$http.get('/api/sys/license').then(response => {
+      if (response.data.status != 1 || response.data.status == null) {
+        this.license = false
+      } else {
+        this.license = true
+      }
+    })
+    //    控制左侧导航点击样式
+    $(document).ready(function () {
+      $('.inactive').click(function () {
+        if ($(this).siblings('ul').css('display') == 'none') {
+          $(this).parent('li').siblings('li').removeClass('inactives')
+          $(this).addClass('inactives')
+          $(this).siblings('ul').slideDown(100).children('li')
+          if ($(this).parents('li').siblings('li').children('ul').css('display') == 'block') {
+            $(this).parents('li').siblings('li').children('ul').parent('li').children('a').removeClass('inactives')
+            $(this).parents('li').siblings('li').children('ul').slideUp(100)
+          }
+        } else {
+          // 控制自身变成+号
+          $(this).removeClass('inactives')
+          // 控制自身菜单下子菜单隐藏
+          $(this).siblings('ul').slideUp(100)
+          // 控制自身子菜单变成+号
+          $(this).siblings('ul').children('li').children('ul').parent('li').children('a').addClass('inactives')
+          // 控制自身菜单下子菜单隐藏
+          $(this).siblings('ul').children('li').children('ul').slideUp(100)
 
-          //将任务创建时间转换成当地时间，格式为：2014年6月18日 上午10:33:24
-          newDate.setTime(val[0].create_time);
-          var local_create_time = newDate.toLocaleString();
-          this.create_time = local_create_time;
-
-          //将任务结束时间转化为当地时间
-          newDate.setTime(val[0].finish_time);
-          var local_finish_time = newDate.toLocaleString();
-          this.finish_time = local_finish_time;
-
-          this.token = val[0].token;
-          this.type = val[0].type;
-          console.log("this.this.token:" + this.token)
+          // 控制同级菜单只保持一个是展开的（-号显示）
+          $(this).siblings('ul').children('li').children('a').removeClass('inactives')
         }
+      })
+    })
+
+    this.getSideBar()
+  },
+  created: function () {
+    this.getTitle()
+  },
+  methods: {
+    logout: function () {
+      $.ajax({
+        type: 'get',
+        url: '/api/user/logout',
+        success: function (data) {
+          window.location.href = 'login.html#!/'
+        }
+      })
+    },
+    getTitle: function () {
+      var url = window.location.href
+      this.result_title = url.split('/')[url.split('/').length - 1]
+      this.result_title = this.result_title.split('?')[0]
+      console.log(' this.result_title' + this.result_title)
+    },
+    // 以下函数控制左侧导航，刷新后仍保持样式
+    clickcolor: function (title) {
+      this.result_title = title
+      this.$router.push({
+        path: '/' + this.result_title,
+        query: {user_id: this.id}
+      })
+    },
+    // 控制二级导航栏刷新后还保持样式
+    getSideBar: function () {
+      // 许可证DIV
+      var licensDiv = document.getElementById('projectManage')
+      // 安全漏洞DIV
+      var vulDiv = document.getElementById('userInfo')
+      var helpDiv = document.getElementById('help')
+      var sysDiv = document.getElementById('sys')
+
+      if (this.result_title == 'upload' || this.result_title == 'my_projects') {
+        // 将ul样式设置为block展开形式，none为隐藏
+        licensDiv.style.display = 'block'
+        $('#project-title').addClass('inactives')
+      }
+
+      if (this.result_title == 'standard') {
+        // 将ul样式设置为block展开形式，none为隐藏
+        helpDiv.style.display = 'block'
+        $('#help-title').addClass('inactives')
+      }
+
+      if (this.result_title == 'sysLicense' || this.result_title == 'server' || this.result_title == 'user_email' || this.result_title == 'log') {
+        // 将ul样式设置为block展开形式，none为隐藏
+        sysDiv.style.display = 'block'
+        $('#sys-title').addClass('inactives')
+      }
+
+      if (this.result_title == 'user_manage' || this.result_title == 'user_info' || this.result_title == 'password') {
+        // 将ul样式设置为block展开形式，none为隐藏
+        vulDiv.style.display = 'block'
+        $('#user-title').addClass('inactives')
+      }
+    }
+  },
+
+  watch: {
+    projectInfo: function (val) {
+      if (val.length != 0) {
+        var newDate = new Date()
+
+        // 将任务创建时间转换成当地时间，格式为：2014年6月18日 上午10:33:24
+        newDate.setTime(val[0].create_time)
+        var local_create_time = newDate.toLocaleString()
+        this.create_time = local_create_time
+
+        // 将任务结束时间转化为当地时间
+        newDate.setTime(val[0].finish_time)
+        var local_finish_time = newDate.toLocaleString()
+        this.finish_time = local_finish_time
+
+        this.token = val[0].token
+        this.type = val[0].type
+        console.log('this.this.token:' + this.token)
       }
     }
   }
+}
 
 </script>
