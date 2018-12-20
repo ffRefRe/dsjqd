@@ -10,46 +10,94 @@
           <div class="auth-box ">
 
               <div class="content">
-                <div class="header">
+                <div class="header" style="text-align: center">
                   <div class="logo text-center"></div>
                   <p class="lead">Register your account</p>
+
+
+                  <div class="box-body" >
+                    <div class="col-md-6">
+
+                      <div class="form-group row">
+                        <label for="example-text-input" style="width: 85px;" class=" col-form-label">用户帐号：</label>
+                        <div class="col-md-9">
+                          <input class="form-control" type="text" id="example-text-input"  >
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="p" style="width: 85px;" class=" col-form-label">用户密码：</label>
+                        <div class="col-md-9">
+                          <input type="password" class="form-control" id="p"  >
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="c" style="width: 85px;" class=" col-form-label">确认密码：</label>
+                        <div class="col-md-9">
+                          <input type="password" class="form-control" id="c"  >
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="ut" style="width: 85px;" class=" col-form-label">用户类型：</label>
+                        <div class="col-md-9">
+                          <select class="form-control" id="ut"  >
+                            <option value = 0> 广告主 </option>
+                            <option value = 1> 广告平台 </option>
+                            <!--<option value = 2> 一般用户 </option>-->
+                          </select>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                      <div class="form-group row">
+                        <label for="u" style="width: 85px;" class=" col-form-label">单位名称：</label>
+                        <div class="col-md-9">
+                          <input class="form-control" type="text" id="u"  >
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="m" style="width: 85px;" class=" col-form-label">邮箱地址：</label>
+                        <div class="col-md-9">
+                          <input class="form-control" type="text" id="m"  >
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label style="width: 85px;" class=" col-form-label">用户状态：</label>
+                        <div class="col-md-9">
+                          <select class="form-control"  >
+                            <option value=1>激活</option>
+                            <option value=0>禁用</option>
+                          </select>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="row" style="padding: 20px">
+                    <div class="col-md-offset-5 col-md-7">
+                      <el-button type="primary" @click="createPerson" round>创建
+                      </el-button>
+                      <el-button round @click="closePerson">取消</el-button>
+                    </div>
+
+                  </div>
+
+
+
                 </div>
 
-                <form class="form-horizontal">
-                  <div class="box-body">
+                <div>
 
-                    <br>
-                    <div class="input-group">
-                      <div class="input-group-btn">
-                        <button type="button" class="btn btn-primary btn-style">
-                          <i class=" fa fa-university"></i>&nbsp;&nbsp;用户名&nbsp;&nbsp;</button>
-                      </div>
-                      <!-- /btn-group -->
-                      <input type="text" class="form-control" placeholder="用户名" v-model="userName" id="unitname"></div>
-                    <br>
 
-                    <div class="input-group">
-                      <div class="input-group-btn">
-                        <button type="button" class="btn btn-primary btn-style">
-                          <i class=" fa fa-envelope"></i>&nbsp;&nbsp;邮箱地址</button>
-                      </div>
-                      <!-- /btn-group -->
-                      <input type="text" class="form-control" placeholder="邮箱地址" v-model="email" id="email"></div>
-                    <br>
-                    <div class="input-group">
-                      <div class="input-group-btn">
-                        <button type="button" class="btn btn-primary  btn-style">
-                          <i class=" fa fa-users"></i>&nbsp;&nbsp;密码&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                      </div>
-                      <!-- /btn-group -->
-                      <input type="text" class="form-control" placeholder="密码" v-model="password"></div>
-                  </div>
-                  <!-- /.box-body -->
-                  <div class="box-footer">
-                    <center>
-                      <button type="button" @click='addUser' class="btn btn-primary">保存修改</button>&nbsp;&nbsp;</center>
-                  </div>
-                </form>
+                </div>
+
+
 
 
             </div>
@@ -57,6 +105,10 @@
         </div>
       </div>
     </div>
+
+
+
+
 
 
 
@@ -117,6 +169,9 @@
 
         })
       },
+      createPerson() {
+        this.$router.push('/')
+      }
 
 
 

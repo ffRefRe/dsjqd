@@ -3,11 +3,25 @@
   <div class="vertical-align-wrap">
     <div class="vertical-align-middle">
       <div class="auth-box ">
+
+
+
         <div class="left">
+
+          <div class="content text">
+            <h1 class="heading">广告主</h1>
+            <p>管理您的广告</p>
+          </div>
+
+        </div>
+
+
+
+        <div class="right">
           <div class="content">
+
             <div class="header">
-              <div class="logo text-center"></div>
-              <p class="lead" id="ptext">广告平台登录</p>
+              <p class="lead" id="ptext">广告主登录</p>
             </div>
 
             <form class="form-auth-small">
@@ -33,13 +47,12 @@
 
           </div>
         </div>
-        <div class="right">
-          <div class="overlay"></div>
-          <div class="content text">
-            <h1 class="heading">广告平台</h1>
-            <p>管理您的广告</p>
-          </div>
-        </div>
+
+
+
+
+
+
         <div class="clearfix"></div>
       </div>
     </div>
@@ -52,11 +65,11 @@
 
 
 <script>
-  import axios from 'axios'
+
 
 
   export default {
-    name: 'login',
+    name: 'loginma',
     data () {
       return {
         msg: 'Welcome to Your Vue.js App',
@@ -83,7 +96,6 @@
 
       login() {
         this.$router.push('/')
-
 
       },
       click: function () {
@@ -168,6 +180,13 @@
     color: #4d4d4d;
   }
 
+  .left{
+    background-color: darkslategrey;
+  }
+
+  .right{
+    padding: 50px;
+  }
 
 
 
