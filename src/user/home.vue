@@ -87,7 +87,7 @@
           <hr style="margin: 10px">
 
           <ul class="nav">
-            <li><a href="" class="active"><i class="lnr lnr-home"></i> <span>广告主</span></a></li>
+            <li><a @click="goPage('first')" class="active"><i class="lnr lnr-home"></i> <span>广告主</span></a></li>
 
             <!--<li><a href="elements.html" class=""><i class="lnr lnr-code"></i> <span>Elements</span></a></li>-->
             <!--<li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Charts</span></a></li>-->

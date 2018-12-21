@@ -9,6 +9,7 @@ import Home from '../user/home'
 import AdSponsor from '../user/page/adSponsor'
 import MyAd from '../user/page/myAd'
 import AdPut from '../user/page/adPut'
+import First from '../user/page/first'
 
 Vue.use(Router)
 
@@ -30,6 +31,10 @@ export default new Router({
         {
           path: '/adPut',
           component: AdPut
+        },
+        {
+          path: '/first',
+          component: First
         }
       ]
     },
