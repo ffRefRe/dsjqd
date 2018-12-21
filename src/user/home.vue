@@ -144,8 +144,8 @@
 </template>
 
 <script>
-// import {bootjs} from '../../static/js/bootstrap.min'
-// import {jqujs} from '../../static/js/jquery.min'
+import {bootjs} from '../../static/js/bootstrap.min'
+import {jqujs} from '../../static/js/jquery.min'
 
 export default {
   data: function () {
