@@ -5,10 +5,13 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import VueResource from 'vue-resource'
+import echarts from 'echarts'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(VueResource)
+
+Vue.prototype.$echarts = echarts
 
 /* eslint-disable no-new */
 new Vue({
