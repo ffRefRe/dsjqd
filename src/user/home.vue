@@ -8,12 +8,6 @@
       </div>
 
       <div class="container-fluid">
-        <!--<div class="navbar-btn">-->
-          <!--<button v-on:@click="arrow_temp += 1" type="button" class="btn-toggle-fullwidth" >-->
-            <!--&lt;!&ndash;<i v-bind:class="{'lnr lnr-arrow-left-circle':arrow_left, 'lnr lnr-arrow-left-circle':arrow_left}"></i>&ndash;&gt;-->
-            <!--<i v-bind:class="{'lnr lnr-arrow-left-circle':arrow_left, 'lnr lnr-arrow-left-circle':arrow_left}" >{{arrow_temp}}</i>-->
-          <!--</button>-->
-        <!--</div>-->
 
         <form class="navbar-form navbar-left">
           <div class="input-group">
@@ -131,7 +125,7 @@
         </nav>
       </div>
     </div>
-    <!--<sidebar></sidebar>-->
+
     <div class="main">
       <div class="main-content">
         <router-view></router-view>
@@ -141,9 +135,8 @@
     <div class="clearfix"></div>
     <footer>
       <div class="container-fluid">
-        <p class="copyright">Copyright &copy; 2018.Company name All rights reserved.
-          <a href="" target="_blank" title="group4">group4</a> -  <a href="" title="group4" target="_blank">广告投放管理系统</a>
-        </p>
+        <p class="copyright">Copyright &copy; 2018.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+
       </div>
     </footer>
   </div>
@@ -151,21 +144,15 @@
 </template>
 
 <script>
-import {bootjs} from '../../static/js/bootstrap.min'
-import {jqujs} from '../../static/js/jquery.min'
-import sidebar from '../components/sidebar'
+// import {bootjs} from '../../static/js/bootstrap.min'
+// import {jqujs} from '../../static/js/jquery.min'
 
 export default {
-  components: {
-    sidebar
-  },
   data: function () {
     return {
-      arrow_temp: 0,
-      arrow_left: true
+
     }
   },
-
   methods: {
     goPage (val) {
       this.$router.push({path: val})

@@ -2,7 +2,7 @@
 
   <div>
     myAd
-    <double-x></double-x>
+
   </div>
 
 </template>
