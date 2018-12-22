@@ -1,29 +1,14 @@
 <template>
-
-  <div>
-    myAd
-    <double-x></double-x>
-  </div>
-
+<double-x></double-x>
 </template>
 
 <script>
 import DoubleX from '../../components/charts/DoubleX'
 export default {
-  name: 'myAd',
   components: {
     DoubleX
   },
-  data () {
-    return {
-
-    }
-  },
-
-  methods: {
-
-  }
-
+  name: 'Home_index'
 }
 </script>
 
