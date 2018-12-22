@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import AdChannel from '../../components/AdChannelsPage/AdChannels'
+import AdChannel from './AdChannelsPage/AdChannels'
 export default {
   name: 'adSponsor',
   components: {

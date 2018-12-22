@@ -104,6 +104,15 @@
                 </ul>
               </div>
             </li>
+            <li>
+              <a href="#subPages_ad_channel" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>广告投放管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+              <div id="subPages_ad_channel" class="collapse ">
+                <ul class="nav">
+                  <li><a @click="goPage('adchannels')">广告投放情况</a></li>
+                  <li><a @click="goPage('adchannelsaya')">广告投放分析</a></li>
+                </ul>
+              </div>
+            </li>
 
             <li>
               <a href="#subPages2" data-toggle="collapse" class="collapsed"><i class="lnr lnr-cog"></i> <span>用户</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>

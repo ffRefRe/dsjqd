@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import ElTable from '../table/ElTable'
+import ElTable from '../../../components/table/ElTable'
 export default {
   name: 'AdChannels',
   components: {
@@ -58,13 +58,13 @@ export default {
     float: left;
   }
   .dataTables_wrapper table thead th.sorting_asc {
-    background-image: url(../../assets/core/sort_asc.png);
+    background-image: url(../../../assets/core/sort_asc.png);
   }
   .dataTables_wrapper table thead th.sorting {
-    background-image: url(../../assets/core/sort.png);
+    background-image: url(../../../assets/core/sort.png);
   }
   .dataTables_wrapper table thead th.sorting_desc {
-    background-image: url(../../assets/core/sort_desc.png);
+    background-image: url(../../../assets/core/sort_desc.png);
   }
   .dataTables_wrapper table thead th.sorting_asc, .dataTables_wrapper table thead th.sorting_desc, .dataTables_wrapper table thead th.sorting {
     background-position: 12px center;
