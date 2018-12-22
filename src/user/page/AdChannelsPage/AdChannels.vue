@@ -9,9 +9,6 @@
           <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
         </div>
       </div>
-      <div>
-
-      </div>
       <div class="dataTables_wrapper panel-body no-padding">
         <el-table></el-table>
       </div>
