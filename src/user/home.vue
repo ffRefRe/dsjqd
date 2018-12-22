@@ -135,7 +135,7 @@
     <div class="clearfix"></div>
     <footer>
       <div class="container-fluid">
-        <p class="copyright">Copyright &copy; 2018.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+        <p class="copyright">Copyright &copy; 2018.Company name All rights reserved.<a href="http://www.cssmoban.com/" target="_blank" title="">group4</a> - Collect from <a href="" title="" target="_blank">广告投放管理系统</a></p>
 
       </div>
     </footer>
@@ -144,8 +144,8 @@
 </template>
 
 <script>
-// import {bootjs} from '../../static/js/bootstrap.min'
-// import {jqujs} from '../../static/js/jquery.min'
+import {bootjs} from '../../static/js/bootstrap.min'
+import {jqujs} from '../../static/js/jquery.min'
 
 export default {
   data: function () {
