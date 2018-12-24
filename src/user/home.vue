@@ -65,9 +65,6 @@
                 <li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
               </ul>
             </li>
-            <!-- <li>
-                            <a class="update-pro" href="#downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
-                        </li> -->
           </ul>
         </div>
       </div>
@@ -78,7 +75,6 @@
         <nav>
 
           <hr style="margin: 10px">
-
           <div class="sidebar-header align-items-center" style="display: flex">
             <div><img src="../assets/user-medium.png" class="img-circle userImg" alt="User Image"></div>
             <span id="adtext">广告主</span>
@@ -87,7 +83,7 @@
           <hr style="margin: 10px">
 
           <ul class="nav">
-            <li><a href="" class="active"><i class="lnr lnr-home"></i> <span>广告主</span></a></li>
+            <li><a v-bind:class="{'active':active_selected===1}" @click="goPage(1, 'homepage')"> <i class="lnr lnr-home"></i> <span>广告主</span></a></li>
 
             <!--<li><a href="elements.html" class=""><i class="lnr lnr-code"></i> <span>Elements</span></a></li>-->
             <!--<li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Charts</span></a></li>-->
@@ -95,21 +91,21 @@
             <!--<li><a href="notifications.html" class=""><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>-->
             <!---->
             <li>
-              <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>我的广告</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+              <a v-bind:class="{'active':active_selected>=2 && active_selected<3}" @click="active_selected=2" href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>我的广告</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
               <div id="subPages" class="collapse ">
                 <ul class="nav">
-                  <li><a @click="goPage('adSponsor')">广告主1</a></li>
-                  <li><a @click="goPage('myAd')">广告主2</a></li>
-                  <li><a @click="goPage('adPut')">广告主3</a></li>
+                  <li><a v-bind:class="{'active':active_selected===2.1}"  @click="goPage(2.1, 'adSponsor')">广告主1</a></li>
+                  <li><a v-bind:class="{'active':active_selected===2.2}"  @click="goPage(2.2, 'myAd')">广告主2</a></li>
+                  <li><a v-bind:class="{'active':active_selected===2.3}"  @click="goPage(2.3,'adPut')">广告主3</a></li>
                 </ul>
               </div>
             </li>
             <li>
-              <a href="#subPages_ad_channel" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>广告投放管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+              <a v-bind:class="{'active':active_selected>=3 && active_selected<4}" @click="active_selected=3" href="#subPages_ad_channel" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>广告投放管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
               <div id="subPages_ad_channel" class="collapse ">
                 <ul class="nav">
-                  <li><a @click="goPage('adchannels')">广告投放情况</a></li>
-                  <li><a @click="goPage('adchannelsaya')">广告投放分析</a></li>
+                  <li><a v-bind:class="{'active':active_selected===3.1}" @click="goPage(3.1, 'adchannels')">广告投放情况</a></li>
+                  <li><a v-bind:class="{'active':active_selected===3.2}" @click="goPage(3.2,'adchannelsaya')">广告投放分析</a></li>
                 </ul>
               </div>
             </li>
@@ -155,15 +151,18 @@
 <script>
 import {bootjs} from '../../static/js/bootstrap.min'
 import {jqujs} from '../../static/js/jquery.min'
-
+// import Vue from 'Vue'
+// Vue.use(bootjs)
+// Vue.use(jqujs)
 export default {
   data: function () {
     return {
-
+      active_selected: 1
     }
   },
   methods: {
-    goPage (val) {
+    goPage (selected, val) {
+      this.active_selected = selected
       this.$router.push({path: val})
     }
   }

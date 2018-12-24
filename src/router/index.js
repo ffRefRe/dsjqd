@@ -9,7 +9,7 @@ import Home from '../user/home'
 import AdSponsor from '../user/page/adSponsor'
 import MyAd from '../user/page/myAd'
 import AdPut from '../user/page/adPut'
-import First from '../user/page/first'
+import HomePage from '../user/page/homepage'
 import AdChannels from '../user/page/AdChannelsPage/AdChannels'
 import AdChannelsAya from '../user/page/AdChannelsPage/AdChannelsAya'
 Vue.use(Router)
@@ -33,8 +33,8 @@ export default new Router({
           component: AdPut
         },
         {
-          path: '/first',
-          component: First
+          path: '/homepage',
+          component: HomePage
         },
         {
           path: '/adchannels',
