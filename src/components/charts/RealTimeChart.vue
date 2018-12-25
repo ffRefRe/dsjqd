@@ -22,7 +22,6 @@ export default {
 
     drawChart () {
       let myChart = echarts.init(document.getElementById('RealTimeChart'))
-
       var date = []
       var randomData = []
 

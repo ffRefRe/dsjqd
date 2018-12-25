@@ -36,8 +36,7 @@
         :data="tableData.slice((currentPage-1)*page_size_selected,currentPage*page_size_selected)"
         stripe
         style="width: 100%"
-        :default-sort = "{prop: 'date', order: 'descending'}"
-      >
+        :default-sort = "{prop: 'date', order: 'descending'}">
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="channel_id" label="APP名称" sortable></el-table-column>
         <el-table-column prop="click_count" label="点击数" ></el-table-column>
@@ -207,7 +206,7 @@ export default {
       ]
     }
   },
-  props: [tableData],
+  props: ['tableData'],
 
   methods: {
     tableRowClassName ({row, rowIndex}) {
