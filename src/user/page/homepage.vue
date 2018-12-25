@@ -18,7 +18,7 @@
                     <span class="icon"><i class="fa fa-download"></i></span>
                     <p>
                       <span class="number">274,678</span>
-                      <span class="title">显示次数</span>
+                      <span class="title">用户数</span>
                     </p>
                   </div>
                 </div>
