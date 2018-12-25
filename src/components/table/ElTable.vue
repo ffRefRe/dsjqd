@@ -362,6 +362,9 @@ export default {
       ]
     }
   },
+  mounted() {
+    this.initData()
+  },
   methods: {
     tableRowClassName ({row, rowIndex}) {
       if (rowIndex === 0) {
@@ -377,8 +380,97 @@ export default {
     },
     current_change: function (currentPage) {
       this.currentPage = currentPage
+    },
+    initData() {
+      this.$http.post('/api/project/adSponsor', {
+        appid:1
+      }, {}).then((response) => {
+        var a = response.body[0]['sum(click_count)'];
+        var b = response.body[0]['sum(ip_count)'];
+        var c = response.body[0]['sum(valid_count)'];
+        var d = response.body[0]['sum(OS_13_count)'];
+        var e = response.body[0]['sum(dv_1_count)'];
+        this.ad_channels_[0].channel_id = 0;
+        this.ad_channels_[0].click_count = a;
+        this.ad_channels_[0].device_count = e;
+        this.ad_channels_[0].os_count = d;
+        this.ad_channels_[0].ip_count = b;
+        this.ad_channels_[0].load_count = c;
+        this.ad_channels_[0].load_l = ( c / b).toFixed(5);
+      });
+
+      this.$http.post('/api/project/adSponsor', {
+        appid:2
+      }, {}).then((response) => {
+        var a = response.body[0]['sum(click_count)'];
+        var b = response.body[0]['sum(ip_count)'];
+        var c = response.body[0]['sum(valid_count)'];
+        var d = response.body[0]['sum(OS_13_count)'];
+        var e = response.body[0]['sum(dv_1_count)'];
+        this.ad_channels_[2].channel_id = 2;
+        this.ad_channels_[2].click_count = a;
+        this.ad_channels_[2].device_count = e;
+        this.ad_channels_[2].os_count = d;
+        this.ad_channels_[2].ip_count = b;
+        this.ad_channels_[2].load_count = c;
+        this.ad_channels_[2].load_l = ( c / b).toFixed(5);
+      });
+
+      this.$http.post('/api/project/adSponsor', {
+        appid:3
+      }, {}).then((response) => {
+        var a = response.body[0]['sum(click_count)'];
+        var b = response.body[0]['sum(ip_count)'];
+        var c = response.body[0]['sum(valid_count)'];
+        var d = response.body[0]['sum(OS_13_count)'];
+        var e = response.body[0]['sum(dv_1_count)'];
+        this.ad_channels_[3].channel_id = 3;
+        this.ad_channels_[3].click_count = a;
+        this.ad_channels_[3].device_count = e;
+        this.ad_channels_[3].os_count = d;
+        this.ad_channels_[3].ip_count = b;
+        this.ad_channels_[3].load_count = c;
+        this.ad_channels_[3].load_l = ( c / b).toFixed(5);
+      });
+
+      this.$http.post('/api/project/adSponsor', {
+        appid:4
+      }, {}).then((response) => {
+        var a = response.body[0]['sum(click_count)'];
+        var b = response.body[0]['sum(ip_count)'];
+        var c = response.body[0]['sum(valid_count)'];
+        var d = response.body[0]['sum(OS_13_count)'];
+        var e = response.body[0]['sum(dv_1_count)'];
+        this.ad_channels_[4].channel_id = 4;
+        this.ad_channels_[4].click_count = a;
+        this.ad_channels_[4].device_count = e;
+        this.ad_channels_[4].os_count = d;
+        this.ad_channels_[4].ip_count = b;
+        this.ad_channels_[4].load_count = c;
+        this.ad_channels_[4].load_l = ( c / b).toFixed(5);
+      });
+
+      this.$http.post('/api/project/adSponsor', {
+        appid:8
+      }, {}).then((response) => {
+        var a = response.body[0]['sum(click_count)'];
+        var b = response.body[0]['sum(ip_count)'];
+        var c = response.body[0]['sum(valid_count)'];
+        var d = response.body[0]['sum(OS_13_count)'];
+        var e = response.body[0]['sum(dv_1_count)'];
+        this.ad_channels_[1].channel_id = 1;
+        this.ad_channels_[1].click_count = a;
+        this.ad_channels_[1].device_count = e;
+        this.ad_channels_[1].os_count = d;
+        this.ad_channels_[1].ip_count = b;
+        this.ad_channels_[1].load_count = c;
+        this.ad_channels_[1].load_l = ( c / b).toFixed(5);
+      });
+
+
     }
-  }
+  },
+
 }
 </script>
 

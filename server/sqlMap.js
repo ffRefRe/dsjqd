@@ -24,7 +24,7 @@ var sqlMap = {
 
     doubleX: 'select sum(click_count) from click where app_id = ? and date = ? group by hour',
 
-
+    adSponsor: 'select sum(click_count), sum(ip_count), sum(valid_count), sum(OS_13_count), sum(dv_1_count) from click where app_id = ?',
 
   }
 

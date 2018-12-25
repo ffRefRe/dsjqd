@@ -170,11 +170,25 @@ router.post('/doubleX', (req, res) => {
     }
     if (result) {
       jsonWrite(res, result);
-      console.log(result);
+      // console.log(result);
     }
   })
 });
 
+//adSponsor
+router.post('/adSponsor', (req, res) => {
+  var sql = $sql.project.adSponsor;
+  var params = req.body;
+  conn.query(sql, [params.appid] ,function(err, result) {
+    if (err) {
+      console.log(err);
+    }
+    if (result) {
+      jsonWrite(res, result);
+      console.log(result);
+    }
+  })
+});
 
 module.exports = router;
 
