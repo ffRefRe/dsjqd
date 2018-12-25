@@ -390,7 +390,7 @@ export default {
         var c = response.body[0]['sum(valid_count)'];
         var d = response.body[0]['sum(OS_13_count)'];
         var e = response.body[0]['sum(dv_1_count)'];
-        this.ad_channels_[0].channel_id = 1;
+        this.ad_channels_[0].channel_id = 0;
         this.ad_channels_[0].click_count = a;
         this.ad_channels_[0].device_count = e;
         this.ad_channels_[0].os_count = d;
@@ -400,7 +400,7 @@ export default {
       });
 
       this.$http.post('/api/project/adSponsor', {
-        appid:1
+        appid:2
       }, {}).then((response) => {
         var a = response.body[0]['sum(click_count)'];
         var b = response.body[0]['sum(ip_count)'];
@@ -417,7 +417,7 @@ export default {
       });
 
       this.$http.post('/api/project/adSponsor', {
-        appid:1
+        appid:3
       }, {}).then((response) => {
         var a = response.body[0]['sum(click_count)'];
         var b = response.body[0]['sum(ip_count)'];
@@ -458,13 +458,13 @@ export default {
         var c = response.body[0]['sum(valid_count)'];
         var d = response.body[0]['sum(OS_13_count)'];
         var e = response.body[0]['sum(dv_1_count)'];
-        this.ad_channels_[5].channel_id = 5;
-        this.ad_channels_[5].click_count = a;
-        this.ad_channels_[5].device_count = e;
-        this.ad_channels_[5].os_count = d;
-        this.ad_channels_[5].ip_count = b;
-        this.ad_channels_[5].load_count = c;
-        this.ad_channels_[5].load_l = ( c / b).toFixed(5);
+        this.ad_channels_[1].channel_id = 1;
+        this.ad_channels_[1].click_count = a;
+        this.ad_channels_[1].device_count = e;
+        this.ad_channels_[1].os_count = d;
+        this.ad_channels_[1].ip_count = b;
+        this.ad_channels_[1].load_count = c;
+        this.ad_channels_[1].load_l = ( c / b).toFixed(5);
       });
 
 
