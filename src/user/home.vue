@@ -9,10 +9,10 @@
 
       <div class="container-fluid">
 
-        <form class="navbar-form navbar-left">
-          <div class="input-group">
-            <span>广告投放管理平台</span>
-          </div>
+        <form class="navbar-form navbar-left" style="padding-left: 0px">
+
+            <span style="font-size: 26px;">广告投放管理平台</span>
+
         </form>
 
         <form class="navbar-form navbar-left">
@@ -25,7 +25,7 @@
         <div class="navbar-btn navbar-btn-right">
           <a class="btn btn-success update-pro" href="#downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank">
             <i class="fa fa-rocket"></i>
-            <span>UPGRADE TO PRO</span>
+            <span> WELLCOME </span>
           </a>
         </div>
 
