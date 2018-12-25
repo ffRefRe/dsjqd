@@ -55,7 +55,7 @@ router.post('/clickCountSun', (req, res) => {
     }
     if (result) {
       jsonWrite(res, result);
-      console.log(result);
+      // console.log(result);
     }
   })
 });
@@ -68,7 +68,7 @@ router.post('/ipCountSun', (req, res) => {
     }
     if (result) {
       jsonWrite(res, result);
-      console.log(result);
+      // console.log(result);
     }
   })
 });
@@ -81,11 +81,99 @@ router.post('/loadCountSun', (req, res) => {
     }
     if (result) {
       jsonWrite(res, result);
-      console.log(result);
+      // console.log(result);
     }
   })
 });
 
+
+//hour
+router.post('/clickCountSunH', (req, res) => {
+  var sql = $sql.project.clickCountSunH;
+  var params = req.body;
+  conn.query(sql, [params.appid, params.datetime, params.hour],function(err, result) {
+    if (err) {
+      console.log(err);
+    }
+    if (result) {
+      jsonWrite(res, result);
+      // console.log(result);
+    }
+  })
+});
+
+router.post('/ipCountSunH', (req, res) => {
+  var sql = $sql.project.ipCountSunH;
+  var params = req.body;
+  conn.query(sql, [params.appid, params.datetime, params.hour],function(err, result) {
+    if (err) {
+      console.log(err);
+    }
+    if (result) {
+      jsonWrite(res, result);
+      // console.log(result);
+    }
+  })
+});
+
+router.post('/loadCountSunH', (req, res) => {
+  var sql = $sql.project.loadCountSunH;
+  var params = req.body;
+  conn.query(sql, [params.appid, params.datetime, params.hour],function(err, result) {
+    if (err) {
+      console.log(err);
+    }
+    if (result) {
+      jsonWrite(res, result);
+    }
+  })
+});
+
+
+//os
+router.post('/os', (req, res) => {
+  var sql = $sql.project.os;
+  var params = req.body;
+  conn.query(sql, [params.appid] ,function(err, result) {
+    if (err) {
+      console.log(err);
+    }
+    if (result) {
+      jsonWrite(res, result);
+      // console.log(result);
+    }
+  })
+});
+
+//dv
+router.post('/dv', (req, res) => {
+  var sql = $sql.project.dv;
+  var params = req.body;
+  conn.query(sql, [params.appid] ,function(err, result) {
+    if (err) {
+      console.log(err);
+    }
+    if (result) {
+      jsonWrite(res, result);
+      // console.log(result);
+    }
+  })
+});
+
+//doubleX
+router.post('/doubleX', (req, res) => {
+  var sql = $sql.project.doubleX;
+  var params = req.body;
+  conn.query(sql, [params.appid, params.datetime] ,function(err, result) {
+    if (err) {
+      console.log(err);
+    }
+    if (result) {
+      jsonWrite(res, result);
+      console.log(result);
+    }
+  })
+});
 
 
 module.exports = router;

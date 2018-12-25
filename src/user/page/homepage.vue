@@ -56,16 +56,16 @@
                 </div>
                 <div class="col-md-3">
                   <div class="weekly-summary text-right">
-                    <span class="number">$215</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 12%</span>
-                    <span class="info-label">日收益</span>
+                    <span class="number">{{clickCountSunH}}</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 12%</span>
+                    <span class="info-label">小时点击次数</span>
                   </div>
                   <div class="weekly-summary text-right">
-                    <span class="number">$5,758</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 23%</span>
-                    <span class="info-label">月收益</span>
+                    <span class="number">{{ipCountSunH}}</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 23%</span>
+                    <span class="info-label">小时用户数</span>
                   </div>
                   <div class="weekly-summary text-right">
-                    <span class="number">$65,938</span> <span class="percentage"><i class="fa fa-caret-down text-danger"></i> 8%</span>
-                    <span class="info-label">年收益</span>
+                    <span class="number">{{loadCountSunH}}</span> <span class="percentage"><i class="fa fa-caret-down text-danger"></i> 8%</span>
+                    <span class="info-label">小时下载量</span>
                   </div>
                 </div>
               </div>
@@ -91,6 +91,9 @@
         clickCountSun: 1,
         ipCountSun: 1,
         loadCountSun: 1,
+        clickCountSunH: 1,
+        ipCountSunH: 1,
+        loadCountSunH: 1,
         rate: 0.0,
 
       }
@@ -99,6 +102,10 @@
       this.requestClickCountSun();
       this.requestIpCountSun();
       this.requestLoadCountSun();
+
+      this.requestClickCountSunH();
+      this.requestIpCountSunH();
+      this.requestLoadCountSunH();
 
     },
     methods: {
@@ -112,17 +119,46 @@
         this.$http.post('/api/project/ipCountSun', {
         }, {}).then((response) => {
           this.ipCountSun = response.bodyText.slice(18,-2);
-          this.rate = (this.loadCountSun / this.clickCountSun).toFixed(5);
+          this.rate = (this.loadCountSun *100/ this.clickCountSun).toFixed(5);
         })
       },
       requestLoadCountSun() {
         this.$http.post('/api/project/loadCountSun', {
         }, {}).then((response) => {
           this.loadCountSun = response.bodyText.slice(21,-2);
-          this.rate = (this.loadCountSun / this.clickCountSun).toFixed(5);
+          this.rate = (this.loadCountSun *100/ this.clickCountSun).toFixed(5);
         })
       },
 
+
+      requestClickCountSunH() {
+        this.$http.post('/api/project/clickCountSunH', {
+          appid: 1,
+          datetime: '2017-11-08',
+          hour: 8
+        }, {}).then((response) => {
+          this.clickCountSunH = response.bodyText.slice(21,-2);
+        })
+      },
+      requestIpCountSunH() {
+        this.$http.post('/api/project/ipCountSunH', {
+          appid: 1,
+          datetime: '2017-11-08',
+          hour: 8
+        }, {}).then((response) => {
+          this.ipCountSunH = response.bodyText.slice(18,-2);
+        })
+      },
+      requestLoadCountSunH() {
+        this.$http.post('/api/project/loadCountSunH', {
+          appid: 1,
+          datetime: '2017-11-08',
+          hour: 8
+        }, {}).then((response) => {
+          this.loadCountSunH = response.bodyText.slice(21,-2);
+
+        })
+      },
 
 
     }

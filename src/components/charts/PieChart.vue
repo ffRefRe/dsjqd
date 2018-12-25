@@ -13,17 +13,19 @@ export default {
   data () {
     return {
       msg: 'DoubleX',
-      chart_datas: [
-        {value: 335, name: 'OS1'},
-        {value: 310, name: 'OS2'},
-        {value: 234, name: 'OS3'},
-        {value: 135, name: 'OS4'},
-        {value: 1548, name: 'OS5'},
-        {value: 120, name: 'other'}]
+
     }
   },
+  props: ['chart_datas'],
+  watch:{
+    chart_datas:function (val) {
+      console.log(this.chart_datas)
+      this.drawChart()
+    }
+  },
+
   mounted () {
-    this.drawChart()
+
   },
   methods: {
     drawChart () {

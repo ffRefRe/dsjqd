@@ -15,9 +15,18 @@ export default {
       msg: 'DoubleX'
     }
   },
+  props: ['lista','listb'],
   mounted () {
-    this.drawChart()
+
   },
+  watch:{
+    listb:function (val) {
+      console.log(123124124214)
+      this.drawChart()
+    }
+  },
+
+
   methods: {
     drawChart () {
       // 基于准备好的dom，初始化echarts实例
@@ -95,13 +104,13 @@ export default {
             type:'line',
             xAxisIndex: 1,
             smooth: true,
-            data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+            data: this.lista
           },
           {
             name:'7日',
             type:'line',
             smooth: true,
-            data: [3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7]
+            data: this.listb
           }
         ]
       })
