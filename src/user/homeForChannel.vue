@@ -75,7 +75,7 @@
           <hr style="margin: 10px">
           <div class="sidebar-header align-items-center" style="display: flex">
             <div><img src="../assets/user-medium.png" class="img-circle userImg" alt="User Image"></div>
-            <span id="adtext">广告主</span>
+            <span id="adtext">广告平台</span>
           </div>
 
           <hr style="margin: 10px">
@@ -102,8 +102,8 @@
               <a v-bind:class="{'active':active_selected>=3 && active_selected<4}" @click="active_selected=3" href="#subPages_ad_channel" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>广告投放管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
               <div id="subPages_ad_channel" class="collapse ">
                 <ul class="nav">
-                  <li><a v-bind:class="{'active':active_selected===3.1}" @click="goPage(3.1, 'adchannels')">广告投放情况</a></li>
-                  <li><a v-bind:class="{'active':active_selected===3.2}" @click="goPage(3.2,'adchannelsaya')">广告投放分析</a></li>
+                  <li><a v-bind:class="{'active':active_selected===3.1}" @click="goPage(3.1, 'adchannels')">广告点击情况</a></li>
+                  <li><a v-bind:class="{'active':active_selected===3.2}" @click="goPage(3.2,'adchannelsaya')">广告点击分析</a></li>
                 </ul>
               </div>
             </li>
@@ -161,17 +161,12 @@ export default {
     goPage (selected, val) {
       this.$router.push({path: val})
       this.active_selected = selected
-
     },
-    askUser() {
-
+    askUser () {
       this.$http.post('/api/project/clickCountSun', {
       }, {}).then((response) => {
         console.log(response)
-
       })
-
-
     }
   }
 

@@ -52,7 +52,9 @@
               </div>
               <div class="row">
                 <div class="col-md-9">
-                  <div id="headline-chart" class="ct-chart"></div>
+                  <div id="headline-chart" class="ct-chart">
+                    <img src="../../assets/HOURLY1.png">
+                  </div>
                 </div>
                 <div class="col-md-3">
                   <div class="weekly-summary text-right">
@@ -84,91 +86,85 @@
 
 <script>
 
-  export default {
-    name: 'first',
-    data () {
-      return {
-        clickCountSun: 1,
-        ipCountSun: 1,
-        loadCountSun: 1,
-        clickCountSunH: 1,
-        ipCountSunH: 1,
-        loadCountSunH: 1,
-        rate: 0.0,
-
-      }
-    },
-    mounted() {
-      this.requestClickCountSun();
-      this.requestIpCountSun();
-      this.requestLoadCountSun();
-
-      this.requestClickCountSunH();
-      this.requestIpCountSunH();
-      this.requestLoadCountSunH();
-
-    },
-    methods: {
-      requestClickCountSun() {
-        this.$http.post('/api/project/clickCountSun', {
-        }, {}).then((response) => {
-          this.clickCountSun = response.bodyText.slice(21,-2);
-        })
-      },
-      requestIpCountSun() {
-        this.$http.post('/api/project/ipCountSun', {
-        }, {}).then((response) => {
-          this.ipCountSun = response.bodyText.slice(18,-2);
-          this.rate = (this.loadCountSun *100/ this.clickCountSun).toFixed(5);
-        })
-      },
-      requestLoadCountSun() {
-        this.$http.post('/api/project/loadCountSun', {
-        }, {}).then((response) => {
-          this.loadCountSun = response.bodyText.slice(21,-2);
-          this.rate = (this.loadCountSun *100/ this.clickCountSun).toFixed(5);
-        })
-      },
-
-
-      requestClickCountSunH() {
-        this.$http.post('/api/project/clickCountSunH', {
-          appid: 1,
-          datetime: '2017-11-08',
-          hour: 8
-        }, {}).then((response) => {
-          this.clickCountSunH = response.bodyText.slice(21,-2);
-        })
-      },
-      requestIpCountSunH() {
-        this.$http.post('/api/project/ipCountSunH', {
-          appid: 1,
-          datetime: '2017-11-08',
-          hour: 8
-        }, {}).then((response) => {
-          this.ipCountSunH = response.bodyText.slice(18,-2);
-        })
-      },
-      requestLoadCountSunH() {
-        this.$http.post('/api/project/loadCountSunH', {
-          appid: 1,
-          datetime: '2017-11-08',
-          hour: 8
-        }, {}).then((response) => {
-          this.loadCountSunH = response.bodyText.slice(21,-2);
-
-        })
-      },
-
+export default {
+  name: 'first',
+  data () {
+    return {
+      clickCountSun: 1,
+      ipCountSun: 1,
+      loadCountSun: 1,
+      clickCountSunH: 1,
+      ipCountSunH: 1,
+      loadCountSunH: 1,
+      rate: 0.0
 
     }
+  },
+  mounted () {
+    this.requestClickCountSun()
+    this.requestIpCountSun()
+    this.requestLoadCountSun()
 
+    this.requestClickCountSunH()
+    this.requestIpCountSunH()
+    this.requestLoadCountSunH()
+  },
+  methods: {
+    requestClickCountSun () {
+      this.$http.post('/api/project/clickCountSun', {
+      }, {}).then((response) => {
+        this.clickCountSun = response.bodyText.slice(21, -2)
+      })
+    },
+    requestIpCountSun () {
+      this.$http.post('/api/project/ipCountSun', {
+      }, {}).then((response) => {
+        this.ipCountSun = response.bodyText.slice(18, -2)
+        this.rate = (this.loadCountSun * 100 / this.clickCountSun).toFixed(5)
+      })
+    },
+    requestLoadCountSun () {
+      this.$http.post('/api/project/loadCountSun', {
+      }, {}).then((response) => {
+        this.loadCountSun = response.bodyText.slice(21, -2)
+        this.rate = (this.loadCountSun * 100 / this.clickCountSun).toFixed(5)
+      })
+    },
+
+    requestClickCountSunH () {
+      this.$http.post('/api/project/clickCountSunH', {
+        appid: 1,
+        datetime: '2017-11-08',
+        hour: 8
+      }, {}).then((response) => {
+        this.clickCountSunH = response.bodyText.slice(21, -2)
+      })
+    },
+    requestIpCountSunH () {
+      this.$http.post('/api/project/ipCountSunH', {
+        appid: 1,
+        datetime: '2017-11-08',
+        hour: 8
+      }, {}).then((response) => {
+        this.ipCountSunH = response.bodyText.slice(18, -2)
+      })
+    },
+    requestLoadCountSunH () {
+      this.$http.post('/api/project/loadCountSunH', {
+        appid: 1,
+        datetime: '2017-11-08',
+        hour: 8
+      }, {}).then((response) => {
+        this.loadCountSunH = response.bodyText.slice(21, -2)
+      })
+    }
 
   }
+
+}
 </script>
 
 <style scoped>
-
 
   #wrapper .main {
     width: calc(100%) !important;
