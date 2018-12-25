@@ -23,7 +23,7 @@
         </form>
 
         <div class="navbar-btn navbar-btn-right">
-          <a class="btn btn-success update-pro" href="#downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank">
+          <a class="btn btn-success update-pro" title="Upgrade to Pro" target="_blank" @click="askUser">
             <i class="fa fa-rocket"></i>
             <span> WELLCOME </span>
           </a>
@@ -114,9 +114,9 @@
               <a href="#subPages2" data-toggle="collapse" class="collapsed"><i class="lnr lnr-cog"></i> <span>用户</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
               <div id="subPages2" class="collapse ">
                 <ul class="nav">
-                  <li><a @click="goPage('login')">登录1</a></li>
-                  <li><a @click="goPage('loginma')">登录2</a></li>
-                  <li><a @click="goPage('register')">注册</a></li>
+                  <li><a @click="goPage(0, 'login')">登录1</a></li>
+                  <li><a @click="goPage(0, 'loginma')">登录2</a></li>
+                  <li><a @click="goPage(0, 'register')">注册</a></li>
                 </ul>
               </div>
 
@@ -162,8 +162,19 @@ export default {
   },
   methods: {
     goPage (selected, val) {
-      this.active_selected = selected
       this.$router.push({path: val})
+      this.active_selected = selected
+
+    },
+    askUser() {
+
+      this.$http.post('/api/project/clickCountSun', {
+      }, {}).then((response) => {
+        console.log(response)
+
+      })
+
+
     }
   }
 

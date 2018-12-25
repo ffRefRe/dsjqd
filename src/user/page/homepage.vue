@@ -17,7 +17,7 @@
                   <div class="metric">
                     <span class="icon"><i class="fa fa-download"></i></span>
                     <p>
-                      <span class="number">274,678</span>
+                      <span class="number">{{ipCountSun}}</span>
                       <span class="title">用户数</span>
                     </p>
                   </div>
@@ -26,7 +26,7 @@
                   <div class="metric">
                     <span class="icon"><i class="fa fa-shopping-bag"></i></span>
                     <p>
-                      <span class="number">1,231</span>
+                      <span class="number">{{clickCountSun}}</span>
                       <span class="title">点击次数</span>
                     </p>
                   </div>
@@ -35,7 +35,7 @@
                   <div class="metric">
                     <span class="icon"><i class="fa fa-eye"></i></span>
                     <p>
-                      <span class="number">88</span>
+                      <span class="number">{{loadCountSun}}</span>
                       <span class="title">下载次数</span>
                     </p>
                   </div>
@@ -44,7 +44,7 @@
                   <div class="metric">
                     <span class="icon"><i class="fa fa-bar-chart"></i></span>
                     <p>
-                      <span class="number">5%</span>
+                      <span class="number">{{rate}}%</span>
                       <span class="title">转化率</span>
                     </p>
                   </div>
@@ -88,13 +88,45 @@
     name: 'first',
     data () {
       return {
+        clickCountSun: 1,
+        ipCountSun: 1,
+        loadCountSun: 1,
+        rate: 0.0,
 
       }
     },
+    mounted() {
+      this.requestClickCountSun();
+      this.requestIpCountSun();
+      this.requestLoadCountSun();
 
+    },
     methods: {
+      requestClickCountSun() {
+        this.$http.post('/api/project/clickCountSun', {
+        }, {}).then((response) => {
+          this.clickCountSun = response.bodyText.slice(21,-2);
+        })
+      },
+      requestIpCountSun() {
+        this.$http.post('/api/project/ipCountSun', {
+        }, {}).then((response) => {
+          this.ipCountSun = response.bodyText.slice(18,-2);
+          this.rate = (this.loadCountSun / this.clickCountSun).toFixed(5);
+        })
+      },
+      requestLoadCountSun() {
+        this.$http.post('/api/project/loadCountSun', {
+        }, {}).then((response) => {
+          this.loadCountSun = response.bodyText.slice(21,-2);
+          this.rate = (this.loadCountSun / this.clickCountSun).toFixed(5);
+        })
+      },
+
+
 
     }
+
 
   }
 </script>

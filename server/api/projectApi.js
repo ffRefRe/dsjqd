@@ -1,4 +1,4 @@
-var models = require('../dbUser');
+var models = require('../dbProject');
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
@@ -35,8 +35,8 @@ router.post('/addUser', (req, res) => {
   })
 });
 
-router.post('/get', (req, res) => {
-  var sql = $sql.user.get;
+router.post('/count', (req, res) => {
+  var sql = $sql.project.count;
   conn.query(sql, function(err, result) {
     if (err) {
       console.log(err);
@@ -46,6 +46,46 @@ router.post('/get', (req, res) => {
     }
   })
 });
+
+router.post('/clickCountSun', (req, res) => {
+  var sql = $sql.project.clickCountSun;
+  conn.query(sql, [1],function(err, result) {
+    if (err) {
+      console.log(err);
+    }
+    if (result) {
+      jsonWrite(res, result);
+      console.log(result);
+    }
+  })
+});
+
+router.post('/ipCountSun', (req, res) => {
+  var sql = $sql.project.ipCountSun;
+  conn.query(sql, [1],function(err, result) {
+    if (err) {
+      console.log(err);
+    }
+    if (result) {
+      jsonWrite(res, result);
+      console.log(result);
+    }
+  })
+});
+
+router.post('/loadCountSun', (req, res) => {
+  var sql = $sql.project.loadCountSun;
+  conn.query(sql, [1],function(err, result) {
+    if (err) {
+      console.log(err);
+    }
+    if (result) {
+      jsonWrite(res, result);
+      console.log(result);
+    }
+  })
+});
+
 
 
 module.exports = router;

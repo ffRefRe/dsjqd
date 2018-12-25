@@ -25,7 +25,7 @@
                   <span> 记住我</span>
                 </label>
               </div>
-              <button @click="login" type="submit" class="btn btn-primary btn-lg btn-block">登  录</button>
+              <button @click="addUser" type="submit" class="btn btn-primary btn-lg btn-block">登  录</button>
               <div class="bottom">
                 <span class="helper-text"><i class="fa fa-lock"></i> <a href="#">忘记密码？</a></span>
               </div>
@@ -57,7 +57,7 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       email: 'samuel.gold@domain.com',
       password: 'thisisthepassword',
-      userName: ''
+      userName: 'xxx222221421',
 
     }
   },
