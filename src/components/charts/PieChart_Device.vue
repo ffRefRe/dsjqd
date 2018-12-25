@@ -1,6 +1,6 @@
 <template>
   <div id="pre-chart">
-    <div id="PreChart" :style="{width: '500px', height: '300px'}"></div>
+    <div id="PreChart1" :style="{width: '500px', height: '300px'}"></div>
   </div>
 </template>
 
@@ -19,7 +19,8 @@ export default {
   props: ['chart_datas'],
   watch:{
     chart_datas:function (val) {
-      console.log(this.chart_datas)
+      console.log(this.chart_datas);
+      console.log(231213);
       this.drawChart()
     }
   },
@@ -29,7 +30,7 @@ export default {
   },
   methods: {
     drawChart () {
-      let myChart = this.$echarts.init(document.getElementById('PreChart'))
+      let myChart = this.$echarts.init(document.getElementById('PreChart1'))
       // 绘制图表
 
       myChart.setOption({

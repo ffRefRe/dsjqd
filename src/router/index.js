@@ -12,6 +12,8 @@ import AdPut from '../user/page/adPut'
 import HomePage from '../user/page/homepage'
 import AdChannels from '../user/page/AdChannelsPage/AdChannels'
 import AdChannelsAya from '../user/page/AdChannelsPage/AdChannelsAya'
+import HomeForChannel from '../user/homeForChannel'
+
 Vue.use(Router)
 
 export default new Router({
@@ -68,6 +70,12 @@ export default new Router({
     {
       path: '/home',
       component: Home
+    },
+    {
+      path: '/homePlat',
+      component: HomeForChannel,
+      children: []
+
     }
   ]
 })

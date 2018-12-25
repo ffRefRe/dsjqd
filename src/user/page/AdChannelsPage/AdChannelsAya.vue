@@ -33,9 +33,8 @@
           <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
         </div>
       </div>
-      <el-button-group>
-        <el-button v-bind:class="{'selected': (selected===0)}" @click="selected=0">操作系统</el-button>
-        <el-button v-bind:class="{'selected': (selected===1)}" @click="selected=1">设备</el-button>
+      <el-button-group style="padding-left: 30px">
+        <el-button class="selected" @click="selected=0">操作系统</el-button>
       </el-button-group>
       <div class="chart-content" ><pie-chart :chart_datas=chart_datas ></pie-chart></div>
     </div>
@@ -63,11 +62,10 @@
           <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
         </div>
       </div>
-      <el-button-group>
-        <el-button v-bind:class="{'selected': (selected===0)}" @click="selected=0">操作系统</el-button>
-        <el-button v-bind:class="{'selected': (selected===1)}" @click="selected=1">设备</el-button>
+      <el-button-group style="padding-left: 30px">
+        <el-button class="selected" @click="selected=1">设备</el-button>
       </el-button-group>
-      <div class="chart-content" ><pie-chart-device :chart_datas=chart_datas ></pie-chart-device>></div>
+      <div class="chart-content" ><pie-chart-device :chart_datas=chart_dataso ></pie-chart-device>></div>
     </div>
   </div>
 </div>
@@ -104,6 +102,13 @@ export default {
         {value: 135, name: 'OS4'},
         {value: 1548, name: 'OS5'},
         {value: 120, name: 'other'}],
+      chart_dataso: [
+        {value: 335, name: 'OS1'},
+        {value: 310, name: 'OS2'},
+        {value: 234, name: 'OS3'},
+        {value: 135, name: 'OS4'},
+        {value: 1548, name: 'OS5'},
+        {value: 120, name: 'other'}],
       lista: [],
       listb: []
     }
@@ -116,7 +121,7 @@ export default {
   methods: {
     initOs () {
       this.$http.post('/api/project/os', {
-        appid: 1
+        appid: 2
       }, {}).then((response) => {
         var a = response.body[0]['sum(OS_13_count)']
         var b = response.body[0]['sum(OS_17_count)']
@@ -127,11 +132,12 @@ export default {
           {value: b, name: 'OS2'},
           {value: c, name: 'OS3'},
           {value: d - a - b - c, name: 'other'}]
+
       })
     },
     initDv () {
       this.$http.post('/api/project/dv', {
-        appid: 1
+        appid: 2
       }, {}).then((response) => {
         var a = response.body[0]['sum(dv_0_count)']
         var b = response.body[0]['sum(dv_1_count)']
@@ -139,11 +145,11 @@ export default {
         var d = response.body[0]['sum(ip_count)']
 
         // console.log(a,b,c,d,d-a-b-c);
-        // this.chart_datas=[
-        //   {value: a, name: 'OS1'},
-        //   {value: b, name: 'OS2'},
-        //   {value: c, name: 'OS3'},
-        //   {value: d-a-b-c, name: 'other'}]
+        this.chart_dataso=[
+          {value: a, name: 'OS1'},
+          {value: b, name: 'OS2'},
+          {value: c, name: 'OS3'},
+          {value: d-a-b-c, name: 'other'}]
       })
     },
     initDoubleX () {

@@ -19,7 +19,6 @@ export default {
   props: ['chart_datas'],
   watch:{
     chart_datas:function (val) {
-      console.log(this.chart_datas)
       this.drawChart()
     }
   },

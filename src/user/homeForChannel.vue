@@ -60,7 +60,7 @@
                 <li><a href="#"><i class="lnr lnr-user"></i> <span>个人主页</span></a></li>
                 <li><a href="#"><i class="lnr lnr-envelope"></i> <span>广告管理</span></a></li>
                 <li><a href="#"><i class="lnr lnr-cog"></i> <span>设置</span></a></li>
-                <li><a href="#"><i class="lnr lnr-exit"></i> <span>登出</span></a></li>
+                <li><a @click="goPage(0, 'login')"><i class="lnr lnr-exit"></i> <span>登出</span></a></li>
               </ul>
             </li>
           </ul>
@@ -81,7 +81,7 @@
           <hr style="margin: 10px">
 
           <ul class="nav">
-            <li><a v-bind:class="{'active':active_selected===1}" @click="goPage(1, 'homepage')"> <i class="lnr lnr-home"></i> <span>广告主</span></a></li>
+            <li><a v-bind:class="{'active':active_selected===1}" @click="goPage(1, 'homepage')"> <i class="lnr lnr-home"></i> <span>广告平台</span></a></li>
 
             <!--<li><a href="elements.html" class=""><i class="lnr lnr-code"></i> <span>Elements</span></a></li>-->
             <!--<li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Charts</span></a></li>-->
@@ -92,9 +92,9 @@
               <a v-bind:class="{'active':active_selected>=2 && active_selected<3}" @click="active_selected=2" href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>我的广告</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
               <div id="subPages" class="collapse ">
                 <ul class="nav">
-                  <li><a v-bind:class="{'active':active_selected===2.1}"  @click="goPage(2.1, 'adSponsor')">广告主1</a></li>
-                  <li><a v-bind:class="{'active':active_selected===2.2}"  @click="goPage(2.2, 'myAd')">广告主2</a></li>
-                  <li><a v-bind:class="{'active':active_selected===2.3}"  @click="goPage(2.3,'adPut')">广告主3</a></li>
+                  <li><a v-bind:class="{'active':active_selected===2.1}"  @click="goPage(2.1, 'adSponsor')">投放广告</a></li>
+                  <li><a v-bind:class="{'active':active_selected===2.2}"  @click="goPage(2.2, 'myAd')">广告详情</a></li>
+                  <li><a v-bind:class="{'active':active_selected===2.3}"  @click="goPage(2.3,'adPut')">广告收益情况</a></li>
                 </ul>
               </div>
             </li>
@@ -130,7 +130,7 @@
 
     <div class="main">
       <div class="main-content">
-        <router-view></router-view>
+        <ad-channel></ad-channel>
       </div>
     </div>
 
@@ -148,10 +148,15 @@
 <script>
 import {bootjs} from '../../static/js/bootstrap.min'
 import {jqujs} from '../../static/js/jquery.min'
+import ElTable from '../components/table/ElTable'
+import AdChannel from './page/AdChannelsPage/AdChannels'
 // import Vue from 'Vue'
 // Vue.use(bootjs)
 // Vue.use(jqujs)
 export default {
+  components: {
+    AdChannel
+  },
   data: function () {
     return {
       active_selected: 1
