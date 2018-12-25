@@ -451,7 +451,7 @@ export default {
       });
 
       this.$http.post('/api/project/adSponsor', {
-        appid:5
+        appid:8
       }, {}).then((response) => {
         var a = response.body[0]['sum(click_count)'];
         var b = response.body[0]['sum(ip_count)'];
